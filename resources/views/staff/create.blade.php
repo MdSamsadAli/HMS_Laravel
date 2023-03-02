@@ -7,8 +7,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Add Customer
-                <a href="{{ url('admin/customer') }}" class="btn btn-primary btn-sm float-right">View All</a>
+            <h6 class="m-0 font-weight-bold text-primary">Add Staff
+                <a href="{{ url('admin/staff') }}" class="btn btn-primary btn-sm float-right">View All</a>
             </h6>
         </div>
         <div class="card-body">
@@ -16,7 +16,7 @@
             <p class="text-success">{{ session('success') }}</p>
             @endif
             <div class="table-responsive">
-                <form action="{{ url('admin/customer') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/staff') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <table class="table table-bordered">
                         <tr>
@@ -26,33 +26,44 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Email</th>
+                            <th>Select Department Type</th>
                             <td>
-                                <input type="email" class="form-control" name="email" />
+                                <select name="department_id" class="form-control">
+                                    <option value="0">---Select----</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}">{{ $department->title }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                         </tr>
-                        <tr>
-                            <th>Password</th>
-                            <td>
-                                <input type="password" class="form-control" name="password" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Mobil Number</th>
-                            <td>
-                                <input type="number" class="form-control" name="mobile_no" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Address</th>
-                            <td>
-                                <input type="text" class="form-control" name="address" />
-                            </td>
-                        </tr>
+                        
+
                         <tr>
                             <th>Photo</th>
                             <td>
                                 <input type="file" class="form-control" name="image" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Bio</th>
+                            <td>
+                                <textarea name="bio" class="form-control"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Salary Type</th>
+                            <td>
+                                <input type="radio" name="salary_type" value="daily"/> Daily
+                                <input type="radio" name="salary_type" value="monthly"/> Monthly
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Salary Amount</th>
+                            <td>
+                                <input type="number" class="form-control" name="salary_amt" />
                             </td>
                         </tr>
                         <tr>

@@ -7,8 +7,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Details Customer
-                <a href="{{ url('admin/customer') }}" class="btn btn-primary btn-sm float-right">View All</a>
+            <h6 class="m-0 font-weight-bold text-primary">Details Staff
+                <a href="{{ url('admin/staff') }}" class="btn btn-primary btn-sm float-right">View All</a>
             </h6>
         </div>
         <div class="card-body">
@@ -16,36 +16,40 @@
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
+                        <th>Department</th>
+                        <td>
+                            {{ $staff->department->title }}
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Full Name</th>
                         <td>
-                            {{ $customer->full_name }}
+                            {{ $staff->full_name }}
                         </td>
                     </tr>
                     <tr>
-                        <th>Email</th>
+                        <th>Photo</th>
                         <td>
-                            {{ $customer->email }}
+                            <img src="{{ asset($staff->photo) }}" alt="img" width="200px" height="100px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bio</th>
+                        <td>
+                            {{ $staff->bio }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Salary Type</th>
+                        <td>
+                            {{ $staff->salary_type}}
                         </td>
                     </tr>
 
                     <tr>
-                        <th>Mobile Number</th>
+                        <th>Salary Amount</th>
                         <td>
-                            {{ $customer->mobile_no }}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>Address</th>
-                        <td>
-                            {{ $customer->address }}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>Image</th>
-                        <td>
-                            <img src="{{ asset($customer->photo) }}" alt="img" width="40%"/>
+                            {{ $staff->salary_amt}}
                         </td>
                     </tr>
                     

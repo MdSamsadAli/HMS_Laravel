@@ -7,8 +7,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Add Room Type
-                <a href="{{ url('admin/roomtype') }}" class="btn btn-primary btn-sm float-right">View All</a>
+            <h6 class="m-0 font-weight-bold text-primary">Edit Room
+                <a href="{{ url('admin/department') }}" class="btn btn-primary btn-sm float-right">View All</a>
             </h6>
         </div>
         <div class="card-body">
@@ -16,34 +16,24 @@
             <p class="text-success">{{ session('success') }}</p>
             @endif
             <div class="table-responsive">
-                <form action="{{ url('admin/roomtype') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/department', $department->id) }}" method="post">
                     @csrf
-
+                    @method('PUT')
                     <table class="table table-bordered">
                         <tr>
                             <th>Title</th>
                             <td>
-                                <input type="text" class="form-control" name="title" />
+                                <input type="text" class="form-control" name="title" value="{{ $department->title }}"/>
                             </td>
                         </tr>
-                        <tr>
-                            <th>Price</th>
-                            <td>
-                                <input type="number" class="form-control" name="price" />
-                            </td>
-                        </tr>
+
                         <tr>
                             <th>Details</th>
                             <td>
-                                <textarea class="form-control" name="detail"></textarea>
+                                <textarea class="form-control" name="detail">{{ $department->detail }}</textarea>
                             </td>
                         </tr>
-                        <tr>
-                            <th>Gallery</th>
-                            <td>
-                                <input type="file" class="form-control" name="imgs[]" multiple />
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <td colspan="2">
                                 <input type="submit" class="btn btn-primary" value="Submit" />

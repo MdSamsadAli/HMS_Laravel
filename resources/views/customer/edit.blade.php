@@ -36,16 +36,10 @@
                         <tr>
                             <th>Mobile Number</th>
                             <td>
-                                <input type="text" class="form-control" name="mobile_no" value="{{ $customer->mobile_no }}"/>
+                                <input type="number" class="form-control" name="mobile_no" value="{{ $customer->mobile_no }}"/>
                             </td>
                         </tr>
                         
-                        <tr>
-                            <th>Password</th>
-                            <td>
-                                <input type="password" class="form-control" name="password" value="{{ $customer->password }}"/>
-                            </td>
-                        </tr>
                         <tr>
                             <th>Address</th>
                             <td>
