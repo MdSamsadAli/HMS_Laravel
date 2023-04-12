@@ -23,36 +23,42 @@
                             <th>Full Name</th>
                             <td>
                                 <input type="text" class="form-control" name="full_name" />
+                                <span class="text-danger">{{ $errors->first('full_name') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Email</th>
                             <td>
                                 <input type="email" class="form-control" name="email" />
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Password</th>
                             <td>
                                 <input type="password" class="form-control" name="password" />
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Mobil Number</th>
                             <td>
                                 <input type="number" class="form-control" name="mobile_no" />
+                                <span class="text-danger">{{ $errors->first('mobile_no') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Address</th>
                             <td>
                                 <input type="text" class="form-control" name="address" />
+                                <span class="text-danger">{{ $errors->first('address') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Photo</th>
                             <td>
                                 <input type="file" class="form-control" name="image" />
+                                <span class="text-danger">{{ $errors->first('image') }}</span>
                             </td>
                         </tr>
                         <tr>

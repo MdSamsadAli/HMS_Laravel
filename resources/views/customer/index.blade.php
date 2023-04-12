@@ -52,7 +52,7 @@
                             <td>{{ $data->mobile_no }}</td>
                             <td>{{ $data->address }}</td>
                             <td>
-                                <img src="{{ asset($data->photo) }}" alt="img" width="100%"/>
+                                <img src="{{ asset("upload/imgs/" . $data->photo) }}" alt="img" width="200px" height="200px" />
                             </td>
                             <td>
                                 <a href="{{ url('admin/customer', $data->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>

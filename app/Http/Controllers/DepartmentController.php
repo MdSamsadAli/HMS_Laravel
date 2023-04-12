@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DepartmentRequest;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
@@ -27,13 +28,12 @@ class DepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DepartmentRequest $request)
     {
-        $department = new Department();
-        $department->title = $request->title;
-        $department->detail = $request->detail;
-        $department->save();
-        return redirect('admin/department')->with('success', 'data has been added');
+        $department = $request->all();
+        if (Department::create($department)) {
+            return redirect('admin/department')->with('success', 'data has been added');
+        }
     }
 
     /**
@@ -60,9 +60,13 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         $department = Department::find($id);
-        $department->title = $request->title;
-        $department->detail = $request->detail;
-        $department->save();
+
+        $department = array(
+            'title'        =>   $request->title,
+            'detail'        =>   $request->detail,
+        );
+
+        Department::whereId($id)->update($department);
 
         return redirect('admin/department')->with('success', 'data has been added');
     }

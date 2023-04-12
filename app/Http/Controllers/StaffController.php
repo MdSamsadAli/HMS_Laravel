@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StaffRequest;
 use App\Models\Department;
 use App\Models\Staff;
+use App\Models\StaffPayment;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
@@ -30,7 +33,7 @@ class StaffController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StaffRequest $request)
     {
 
         $file = $request->file('image');
@@ -113,5 +116,35 @@ class StaffController extends Controller
     {
         Staff::where('id', $id)->delete();
         return redirect('admin/staff')->with('success', 'Data has been Deleted');
+    }
+
+
+    // All Payments 
+    public function all_payments(Request $request, $staff_id)
+    {
+        $data = StaffPayment::where('staff_id', $staff_id)->get();
+        $staff = Staff::find($staff_id);
+        return view('staffpayment.index', ['staff_id' => $staff_id, 'data' => $data, 'staff' => $staff]);
+    }
+    //Add Payment
+    public function add_payment($staff_id)
+    {
+        return view('staffpayment.create', ['staff_id' => $staff_id]);
+    }
+
+    // store payment 
+    function save_payment(Request $request, $staff_id)
+    {
+        $data = new StaffPayment();
+        $data->staff_id = $staff_id;
+        $data->amount = $request->amount;
+        $data->payment_date = $request->amount_date;
+        $data->save();
+        return redirect()->back()->with('success', 'Data has been saved sucessfully.');
+    }
+    function delete_payment($id)
+    {
+        StaffPayment::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Data has been Deleted');
     }
 }

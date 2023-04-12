@@ -24,18 +24,21 @@
                             <th>Title</th>
                             <td>
                                 <input type="text" class="form-control" name="title" />
+                                <span class="text-danger">{{ $errors->first('title') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Price</th>
                             <td>
                                 <input type="number" class="form-control" name="price" />
+                                <span class="text-danger">{{ $errors->first('price') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Details</th>
                             <td>
                                 <textarea class="form-control" name="detail"></textarea>
+                                <span class="text-danger">{{ $errors->first('detail') }}</span>
                             </td>
                         </tr>
                         <tr>

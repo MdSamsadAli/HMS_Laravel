@@ -24,12 +24,14 @@
                             <th>Full Name</th>
                             <td>
                                 <input type="text" class="form-control" name="full_name" value="{{ $customer->full_name }}"/>
+                                <span class="text-danger">{{ $errors->first('full_name') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Email</th>
                             <td>
                                 <input type="email" class="form-control" name="email" value="{{ $customer->email }}"/>
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                             </td>
                         </tr>
 
@@ -37,6 +39,7 @@
                             <th>Mobile Number</th>
                             <td>
                                 <input type="number" class="form-control" name="mobile_no" value="{{ $customer->mobile_no }}"/>
+                                <span class="text-danger">{{ $errors->first('mobil_no') }}</span>
                             </td>
                         </tr>
                         
@@ -44,6 +47,7 @@
                             <th>Address</th>
                             <td>
                                 <input type="text" class="form-control" name="address" value="{{ $customer->address }}"/>
+                                <span class="text-danger">{{ $errors->first('address') }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -51,7 +55,7 @@
                             <td>
                                 <input type="file" class="form-control" name="image" value="{{ $customer->photo }}"/>
                                 <input type="hidden" class="form-control" name="old_image" value="{{ $customer->photo }}"/>
-                                <img src="{{ asset($customer->photo) }}" alt="img" width="40%"/>
+                                <img src="{{ asset("upload/imgs/".$customer->photo) }}" alt="img" width="40%"/>
                             </td>
                         </tr>
                         <tr>

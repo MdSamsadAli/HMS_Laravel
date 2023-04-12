@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -28,23 +29,23 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-        $file = $request->file('image');
-        $ext = $file->getClientOriginalExtension();
-        $filename = time() . '.' . $ext;
-        $imgPath = $file->move('upload/imgs', $filename);
+        $customer = $request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'upload/imgs/';
 
-        $customers = new Customer();
+            if (file_exists($destinationPath)) {
+                @unlink($destinationPath);
+            }
+            $customerImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $customerImage);
+            $customer['photo'] = "$customerImage";
+        }   
 
-        $customers->full_name = $request->full_name;
-        $customers->email = $request->email;
-        $customers->password = $request->password;
-        $customers->mobile_no = $request->mobile_no;
-        $customers->address = $request->address;
-        $customers->photo = $imgPath;
-        $customers->save();
-        return redirect('admin/customer')->with('success', 'data has been added');
+        if (Customer::create($customer)) {
+            return redirect('admin/customer')->with('success', 'data has been added');
+        }
     }
 
     /**
@@ -85,8 +86,8 @@ class CustomerController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time() . '.' . $ext;
-            $file->move('uploads/slider/', $filename);
-            $request['photo'] = "uploads/slider/$filename";
+            $file->move('upload/imgs/', $filename);
+            $request['photo'] = "upload/imgs/$filename";
         }
 
 
@@ -100,6 +101,25 @@ class CustomerController extends Controller
         ]);
 
         return redirect('admin/customer')->with('success', 'data has been updated');
+
+        // $customer = request()->except(['_token']);
+        // $img = $request->file('image');
+        // $new_name = rand() . '.' . $img->getClientOriginalExtension();
+        // $img->move(public_path('upload/imgs'), $new_name);
+
+        // if (file_exists(public_path($new_name))) {
+        //     unlink(public_path($new_name));
+        // };
+        // $customer = array(
+        //     'full_name' => $request->full_name,
+        //     'email' => $request->email,
+        //     'mobile_no' => $request->mobile_no,
+        //     'address' => $request->address,
+        //     'photo' => $new_name ?? true
+        // );
+
+        // Customer::whereId($id)->update($customer);
+        // return redirect('admin/customer')->with('success', 'data has been updated');
     }
 
     /**

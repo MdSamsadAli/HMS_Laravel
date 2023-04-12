@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoomTypeRequest;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\RoomType;
@@ -35,7 +36,7 @@ class RoomController extends Controller
         $room->room_type_id = $request->rt_id;
         $room->title = $request->title;
         $room->save();
-        return redirect('admin/room')->with('success', 'data has been added');
+        return redirect('admin/rooms')->with('success', 'data has been added');
     }
 
     /**
@@ -65,7 +66,7 @@ class RoomController extends Controller
     {
         $room = Room::find($id);
         $room->room_type_id = $request->rt_id;
-        $room->title= $request->title;
+        $room->title = $request->title;
         $room->save();
 
         return redirect('admin/room')->with('success', 'data has been added');
@@ -76,7 +77,7 @@ class RoomController extends Controller
      */
     public function destroy(string $id)
     {
-       Room::where('id', $id)->delete();
-       return redirect('admin/room')->with('success', 'Data has been Deleted');
+        Room::where('id', $id)->delete();
+        return redirect('admin/rooms')->with('success', 'Data has been Deleted');
     }
 }

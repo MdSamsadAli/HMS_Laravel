@@ -24,8 +24,8 @@
                             <th>Department</th>
                             <th>Photo</th>
                             <th>Bio</th>
-                            <th>Salary Type</th>
-                            <th>Salary Amount</th>
+                            {{-- <th>Salary Type</th>
+                            <th>Salary Amount</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -36,8 +36,8 @@
                             <th>Department</th>
                             <th>Photo</th>
                             <th>Bio</th>
-                            <th>Salary Type</th>
-                            <th>Salary Amount</th>
+                            {{-- <th>Salary Type</th>
+                            <th>Salary Amount</th> --}}
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -53,11 +53,12 @@
                                 
                             </td>
                             <td>{{ $data->bio }}</td>
-                            <td>{{ $data->salary_type }}</td>
-                            <td>{{ $data->salary_amt }}</td>
+                            {{-- <td>{{ $data->salary_type }}</td>
+                            <td>{{ $data->salary_amt }}</td> --}}
                             <td>
                                 <a href="{{ url('admin/staff', $data->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                 <a href="{{ url('admin/staff/'.$data->id. '/edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="{{ url('admin/staff/payments/'.$data->id) }}" class="btn btn-dark btn-sm"><i class="fa fa-credit-card"></i></a>
                                 <a onclick="return confirm('Are you Sure to delete this data ?')" href="{{ url('admin/staff/'. $data->id. '/delete') }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>

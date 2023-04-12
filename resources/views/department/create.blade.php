@@ -23,6 +23,7 @@
                             <th>Title</th>
                             <td>
                                 <input type="text" class="form-control" name="title" />
+                                <span class="text-danger">{{ $errors->first('title') }}</span>
                             </td>
                         </tr>
 
@@ -30,6 +31,7 @@
                             <th>Details</th>
                             <td>
                                 <textarea name="detail" class="form-control"></textarea>
+                                <span class="text-danger">{{ $errors->first('detail') }}</span>
                             </td>
                         </tr>
 

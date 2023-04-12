@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoomTypeRequest;
 use Illuminate\Http\Request;
 use App\Models\RoomType;
 use App\Models\Roomtypeimage;
@@ -29,7 +30,7 @@ class RoomTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoomTypeRequest $request)
     {
         $roomtype = new RoomType();
         $roomtype->title = $request->title;

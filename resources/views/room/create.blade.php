@@ -28,12 +28,14 @@
                                         <option value="{{ $rt->id }}">{{ $rt->title }}</option>
                                     @endforeach
                                 </select>
+                                <span class="text-danger">{{ $errors->first('rt_id') }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Title</th>
                             <td>
                                 <input type="text" class="form-control" name="title" />
+                                <span class="text-danger">{{ $errors->first('title') }}</span>
                             </td>
                         </tr>
                         <tr>

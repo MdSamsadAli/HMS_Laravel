@@ -23,6 +23,7 @@
                             <th>Full Name</th>
                             <td>
                                 <input type="text" class="form-control" name="full_name" />
+                                <span class="text-danger">{{ $errors->first('full_name') }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -34,6 +35,7 @@
                                         <option value="{{ $department->id }}">{{ $department->title }}</option>
                                     @endforeach
                                 </select>
+                                <span class="text-danger">{{ $errors->first('department') }}</span>
                             </td>
                         </tr>
                         
@@ -42,6 +44,7 @@
                             <th>Photo</th>
                             <td>
                                 <input type="file" class="form-control" name="image" />
+                                <span class="text-danger">{{ $errors->first('image') }}</span>
                             </td>
                         </tr>
 
@@ -49,6 +52,7 @@
                             <th>Bio</th>
                             <td>
                                 <textarea name="bio" class="form-control"></textarea>
+                                <span class="text-danger">{{ $errors->first('bio') }}</span>
                             </td>
                         </tr>
 
@@ -57,6 +61,7 @@
                             <td>
                                 <input type="radio" name="salary_type" value="daily"/> Daily
                                 <input type="radio" name="salary_type" value="monthly"/> Monthly
+                                <span class="text-danger">{{ $errors->first('salary_type') }}</span>
                             </td>
                         </tr>
 
@@ -64,6 +69,7 @@
                             <th>Salary Amount</th>
                             <td>
                                 <input type="number" class="form-control" name="salary_amt" />
+                                <span class="text-danger">{{ $errors->first('salary_amt') }}</span>
                             </td>
                         </tr>
                         <tr>

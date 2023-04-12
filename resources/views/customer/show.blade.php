@@ -45,7 +45,7 @@
                     <tr>
                         <th>Image</th>
                         <td>
-                            <img src="{{ asset($customer->photo) }}" alt="img" width="40%"/>
+                            <img src="{{ asset("upload/imgs/" .$customer->photo) }}" alt="img" width="40%"/>
                         </td>
                     </tr>
                     
