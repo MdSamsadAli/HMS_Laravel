@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\User\HomeController;
+// use App\Http\Controllers\User\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +57,4 @@ Route::get('admin/booking/{id}/delete/', [BookingController::class, 'destroy']);
 
 Route::get('admin/booking/available-rooms/{checkin_date}', [BookingController::class, 'available_rooms']);
 
-Route::get('user/', HomeController::class);
+// Route::get('user/', HomeController::class);
